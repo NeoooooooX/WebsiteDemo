@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const overlay = document.getElementById("overlay");
   const soundOnBtn = document.getElementById("soundOn");
   const soundOffBtn = document.getElementById("soundOff");
-  const music = new Audio("assets/SuperMaLou.MP3");
+  const music = new Audio("assets/HappyMonkey-Live.MP3");
   music.loop = true;
 
   const eq = document.querySelector(".sound .eq");
