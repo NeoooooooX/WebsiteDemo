@@ -2676,6 +2676,7 @@ textarea.w-select {
 
 .btn-div {
   position: relative;
+  padding-left: 10px;
 }
 
 .menu-btn {
