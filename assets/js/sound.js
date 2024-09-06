@@ -9,10 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.body.style.overflow = "hidden";
 
-  if (localStorage.getItem("playMusic") === "true") {
-    closeOverlay();
-  }
-
   soundOnBtn.addEventListener("click", function () {
     playMusic();
     eq.classList.add("playing");
