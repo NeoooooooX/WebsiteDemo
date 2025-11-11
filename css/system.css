@@ -1201,7 +1201,6 @@ img {
 .mql-h-small {
   text-wrap: balance;
   margin-top: 0;
-  margin-bottom: 0.75rem;
   font-size: 1.2em;
   font-weight: 600;
   line-height: 1.4em;
@@ -2791,7 +2790,6 @@ img {
   white-space: nowrap;
   flex: none;
   width: 100%;
-  position: absolute;
   inset: 0%;
   overflow: hidden;
 }
