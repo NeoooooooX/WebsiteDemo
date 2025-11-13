@@ -1747,7 +1747,6 @@ img {
   position: relative;
 }
 .v26-product-ui-main-wrap {
-  overflow: hidden;
 }
 .v26-product-ui-main {
   border-radius: var(--border-radius--large);
