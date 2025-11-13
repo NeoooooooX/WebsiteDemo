@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MatrixQuant Labs丨矩陣量化實驗室</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="MatrixQuant Labs develops professional TradingView indicators and AI-powered trading systems. From Supertrend to Harmonic pattern detection, every tool is precision-tested for real market performance. Simplify your charts, enhance your execution, and trade with structure.">
+    <link rel="canonical" href="https://www.matrixquant.ai/">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.matrixquant.ai/">
+    <meta property="og:site_name" content="MatrixQuant Labs">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="MatrixQuant Labs丨Advanced TradingView Indicators & AI Trading Systems">
+    <meta property="og:description"
+        content="MatrixQuant Labs develops professional TradingView indicators and AI-powered trading systems. From Supertrend to Harmonic pattern detection, every tool is precision-tested for real market performance. Simplify your charts, enhance your execution, and trade with structure.">
+    <meta property="og:image" content="https://www.matrixquant.ai/assets/img/opengraph.webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MatrixQuant Labs丨Advanced TradingView Indicators & AI Trading Systems">
+    <meta name="twitter:description"
+        content="MatrixQuant Labs develops professional TradingView indicators and AI-powered trading systems. From Supertrend to Harmonic pattern detection, every tool is precision-tested for real market performance. Simplify your charts, enhance your execution, and trade with structure.">
+    <meta name="twitter:image" content="https://www.matrixquant.ai/assets/img/opengraph.webp">
+    <!-- <meta name="twitter:site" content="@YourTwitter"> -->
+
+    <!-- Icons -->
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="any">
+    <link rel="icon" href="assets/img/favicon-256.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon-180.png" sizes="180x180">
+
+    <!-- Theme color (optional) -->
+    <meta name="theme-color" content="#0B0B0F">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/system.css">
+</head>
+
+<body data-scroll-time=".25" class="mql-body">
+    <div>
+        <div id="loader" class="v26-product-loader">
+            <div class="v26-pl-wrap"><img src="assets/img/st-use-before-load.webp" loading="eager"
+                    class="v26-pl-image" />
+                <div class="v26-pl-after-wrap"><img src="assets/img/st-use-after-opt.webp" loading="eager" alt=""
+                        class="v26-pl-image" /></div>
+                <div class="v26-pl-line-container">
+                    <div class="v26-reveal-line"></div>
+                </div>
+            </div>
+            <div class="w-embed w-script">
+                <script>
+                    const windowSize = window.matchMedia("(max-width: 991px)");
+                    const loadSection = document.querySelector(".v26-product-loader");
+
+                    if (loadSection && !windowSize.matches) {
+                        const images = loadSection.querySelectorAll("img");
+                        const afterWrap = loadSection.querySelector(".v26-pl-after-wrap");
+
+                        afterWrap.addEventListener("transitionend", productLoaderEnd);
+
+                        Promise.all(
+                            Array.from(images).map((img) =>
+                                img.complete
+                                    ? Promise.resolve()
+                                    : new Promise((resolve) =>
+                                        img.addEventListener("load", resolve),
+                                    ),
+                            ),
+                        ).then(() => {
+                            loadSection.querySelector(".v26-pl-wrap").style.opacity = 1;
+                            setTimeout(productLoaderStart, 500);
+                        });
+                    } else {
+                        loadSection.remove();
+                    }
+
+                    function productLoaderStart() {
+                        loadSection.classList.add("loaded");
+                    }
+
+                    function productLoaderEnd() {
+                        setTimeout(() => {
+                            loadSection.classList.add("resolve");
+                            setTimeout(() => {
+                                loadSection.remove();
+                            }, 1000);
+                        }, 50);
+                    }
+                </script>
+            </div>
+        </div>
+        <div id="top" class="mql-nav-ads">
+            <div class="mql-nav-container mql-nav-ads-size no-margin">
+                <div class="mql-nav-ads-content">
+                    <div class="mql-nav-ads-product-w-icon">
+                        <div class="mql-nav-ads-h-label mql-nav-color-green">New</div>
+                        <img src="assets/img/discount.svg" oading="lazy" alt=""
+                            class="mql-nav-ads-product-icon small" />
+                        <h1 class="mql-nav-h-xsmall no-margin">Black Friday Special Offers, Enjoy Discounts Up to <span
+                                style="color: #00ffaa; font-size: 1.5em;">50%! </span>🎉</h1>
+                    </div>
+                    <div class="mql-nav-ads-right">
+                        <!--div class="no-margin mql-nav-mobile-hide">title</div-->
+                        <a data-w-id="mouseevents" href="#pricing"
+                            class="mql-nav-button-medium color00ffff w-inline-block">
+                            <div class="mql-nav-button-content static">
+                                <div class="mql-nav-button-link-text no-hover" style="color: #282828;">Get it</div>
+                            </div>
+                            <div class="mql-nav-button-content dynamic">
+                                <div class="mql-nav-button-link-text" style="color: #282828;">Get it</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mql-nav-divider-1"></div>
+        <div class="mql-nav-wrapper">
+            <div class="mql-nav-top-container">
+                <div class="mql-nav-container mql-nav-ads-size mql">
+                    <div class="mql-content">
+                        <div class="mql-left">
+                            <div class="mq-logo-svg w-embed">
+                                <a href="#">
+                                    <img src="assets/img/MatrixQuantLabs-Logo.svg" loading=" lazy" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="mql-right">
+                            <div class="mql-social">
+                                <a href="#" class="mql-icon-link w-inline-block">
+                                    <div class="mql-small-icon w-embed">
+                                        <img src="assets/img/x-white.svg" loading="lazy" alt="">
+                                    </div>
+                                </a>
+                                <a href="#" class="mql-icon-link w-inline-block">
+                                    <div class="mql-small-icon w-embed">
+                                        <img src="assets/img/x-white.svg" loading="lazy" alt="">
+                                    </div>
+                                </a>
+                                <a href="#" class="mql-icon-link w-inline-block">
+                                    <div class="mql-small-icon w-embed">
+                                        <img src="assets/img/x-white.svg" loading="lazy" alt="">
+                                    </div>
+                                </a>
+                                <a href="#" class="mql-icon-link w-inline-block">
+                                    <div class="mql-small-icon w-embed">
+                                        <img src="assets/img/telegram-a-white.svg" loading="lazy" alt="">
+                                    </div>
+                                </a>
+                                <a href="#" class="mql-icon-link w-inline-block">
+                                    <div class="mql-small-icon w-embed">
+                                        <img src="assets/img/TradingView-White.svg" loading="lazy" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="v26-product-hero-wrap">
+            <div class="v26-tidbits-section">
+                <div class="mql-container v26-ultra no-margin">
+                    <div class="v26-tidbits">
+                        <div class="v26-tidbits-block">
+                            <div class="v26-h-label max-w-25rem text-wrap-balance">Create Profitable Trading Indicators in Minutes
+                            </div>
+                        </div>
+                        <div class="v26-tidbits-block">
+                            <div class="v26-h-label max-w-25rem text-wrap-balance">No Coding Required</div>
+                            <div class="v26-h-label max-w-25rem text-wrap-balance">Saving both time and money on freelancers.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="mql-container v26-ultra no-margin">
+                    <div class="v26-product-hero">
+                        <div class="v26-product-hero-left">
+                            <div data-wf--v26-vertical-spacer--variant="small" class="v26-vertical-spacer"></div>
+                            <h1 class="mql-h-large no-margin">Best TradingView AI Pine Script</h1>
+                            <div data-wf--v26-vertical-spacer--variant="x-small"
+                                class="v26-vertical-spacer w-variant-bbe82bf8-5163-8add-38e7-92815a96b542"></div>
+                            <div data-wf--v26-product-hero-pricing--variant="base" class="v26-product-hero-pricing">
+                                <div class="v26-product-pricing-left">
+                                    <h2 class="mql-h-xsmall bot-m--25rem">Essential Toolkit for Every Trader</h2>
+                                    <div class="mql-p-small no-margin opacity-65" style="color: #ccc;">No Coding Required</div>
+                                </div>
+                                <div class="mql-nav-ads-right">
+                                    <a data-w-id="mouseevents" href="#pricing"
+                                        class="mql-nav-button-medium color00ffff w-inline-block">
+                                        <div class="mql-nav-button-content static">
+                                            <div class="mql-nav-button-link-text no-hover" style="color: #282828;">Get
+                                                it</div>
+                                        </div>
+                                        <div class="mql-nav-button-content dynamic">
+                                            <div class="mql-nav-button-link-text" style="color: #282828;">Get it</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="v26-product-hero-right">
+                            <div class="before-after-enhance-box"><img src="assets/img/st-use-before-opt.webp"
+                                    loading="lazy"
+                                    alt="Photo of exotic bird before AI image enhancement with Photo AI 4" sizes="100vw"
+                                    srcset="assets/img/st-use-before-500.webp 500w, assets/img/st-use-before-800.webp 800w, assets/img/st-use-before-1080.webp 1080w, assets/img/st-use-before-1600.webp 1600w, assets/img/st-use-before-opt.webp 1844w"
+                                    class="baeb-image before" />
+                                <div class="baeb-image-afterwrap"><img src="assets/img/st-use-after-opt.webp"
+                                        loading="lazy"
+                                        alt="Photo of exotic bird after image enhancement with Photo AI 4. Sharpened, denoised and enhanced lighting plus color."
+                                        sizes="(max-width: 3024px) 100vw, 3024px"
+                                        srcset="assets/img/st-use-after-opt-500.webp 500w, assets/img/st-use-after-opt-800.webp 800w, assets/img/st-use-after-opt-1080.webp 1080w, assets/img/st-use-after-opt-1600.webp 1600w, assets/img/st-use-after-opt-2000.webp 2000w, assets/img/st-use-after-opt.webp 3024w"
+                                        class="baeb-image after" /></div>
+                                <div class="baeb-enhance-box">
+                                    <div class="baeb-label-position">
+                                        <div class="v26-label-pill">
+                                            <div class="v26-h-label">Tap and hold</div>
+                                        </div>
+                                    </div>
+                                    <div class="baeb-label-move"><img src="assets/img/icon-move-black.svg"
+                                            loading="lazy" alt="" class="move-icon" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="v26-show-fixed-nav">
+            <div class="mql-section">
+                <div class="mql-container text-align-center">
+                    <div class="v26-feature-button-grid">
+                        <div data-videourl="" class="v26-feature-button">
+                            <h3 class="no-margin v26-link-text">Indicator</h3>
+                        </div>
+                        <div data-videourl="" class="v26-feature-button">
+                            <h3 class="no-margin v26-link-text">Strategy</h3>
+                        </div>
+                        <div data-videourl="" class="v26-feature-button">
+                            <h3 class="no-margin v26-link-text">Screener</h3>
+                        </div>
+                        <div data-videourl="" class="v26-feature-button">
+                            <h3 class="no-margin v26-link-text">Invited Indicator</h3>
+                        </div>
+                        <div data-videourl="" class="v26-feature-button">
+                            <h3 class="no-margin v26-link-text">Strategy Optimizer</h3>
+                        </div>
+                        <div data-videourl="" class="v26-feature-button">
+                            <h3 class="no-margin v26-link-text">Matrix AI</h3>
+                        </div>
+                    </div>
+                    <div class="v26-vertical-spacer-small"></div>
+                    <h1 class="mql-h-large">Build indicators and strategies 10x faster — trusted by traders worldwide.</h1>
+                    <p class="mql-p-medium mql-color-stone max-w-40rem margin-auto">Pine Script® is TradingView’s programming language. It allows traders to create their own trading tools and run them on our servers. We designed Pine Script as a lightweight, yet powerful, language for developing indicators and strategies that you can then backtest. Most of TradingView’s built-in indicators are written in Pine Script, and our thriving community of Pine Script programmers has published more than 150,000 Community Scripts, half of which are open-source.</p>
+                </div>
+            </div>
+            <div class="v26-product-ui-section">
+                <div class="mql-container no-margin">
+                    <div class="v26-product-ui-wrap">
+                        <div class="v26-product-ui-main-wrap"><img src="assets/img/tp-ui-main.webp" loading="lazy"
+                                sizes="(max-width: 2880px) 100vw, 2880px"
+                                srcset="assets/img/tp-ui-main-p-500.webp 500w, assets/img/tp-ui-main-p-800.webp 800w, assets/img/tp-ui-main-p-1080.webp 1080w, assets/img/tp-ui-main-p-1600.webp 1600w, assets/img/tp-ui-main-p-2000.webp 2000w, assets/img/tp-ui-main-p-2600.webp 2600w, assets/img/tp-ui-main.webp 2880w"
+                                alt="" class="v26-product-ui-main" /></div><img src="assets/img/tp-ui-left.webp"
+                            loading="lazy" width="200.5" sizes="200.5px" alt=""
+                            srcset="assets/img/tp-ui-left-p-500.webp 500w, assets/img/tp-ui-left.webp 544w"
+                            class="v26-product-ui-left" /><img src="assets/img/tp-ui-right.webp" loading="lazy"
+                            width="200.5" sizes="200.5px" alt=""
+                            srcset="assets/img/tp-ui-right-p-500.webp 500w, assets/img/tp-ui-right.webp 544w"
+                            class="v26-product-ui-right" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="v26-show-testimonial">
+            <div data-wf--v26-scroll-reveal-photo--variant="base" data-w-id="13e062c6-3bee-ecbc-af42-2eb10a1b7acf"
+                class="mql-scroll-reveal">
+                <div class="mql-scroll-reveal-cam">
+                    <div class="mql-scroll-reveal-container"><img src="assets/img/detail2-before-opt.webp"
+                            loading="lazy"
+                            alt="Landscape photo of mountains before AI image enhancement with Photo AI 4. "
+                            class="mql-image-fill scroll-reveal" />
+                        <div class="v26-scroll-reveal-after-wrap"><img src="assets/img/detail2-after-opt.webp"
+                                loading="lazy"
+                                alt="Landscape photo of mountains after AI image enhancement with Photo AI 4. Sharper, brighter and less noise from high ISO"
+                                sizes="100vw"
+                                srcset="assets/img/detail2-after-opt-p-500.webp 500w, assets/img/detail2-after-opt-p-800.webp 800w, assets/img/detail2-after-opt-p-1080.webp 1080w, assets/img/detail2-after-opt-p-1600.webp 1600w, assets/img/detail2-after-opt-p-2000.webp 2000w, assets/img/detail2-after-opt-p-2600.webp 2600w, assets/img/detail2-after-opt-p-3200.webp 3200w, assets/img/detail2-after-opt.webp 3840w"
+                                class="mql-image-fill scroll-reveal after" /></div>
+                        <div class="v26-scroll-reveal-label-right">
+                            <div class="v26-label-pill">
+                                <div class="v26-h-label">After</div>
+                            </div>
+                        </div>
+                        <div class="mql-scroll-reveal-line"></div>
+                        <div class="v26-scroll-reveal-label-left">
+                            <div class="v26-label-pill">
+                                <div class="v26-h-label">Before</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mql-scroll-reveal-content">
+                        <div class="mql-scroll-reveal-content-1">
+                            <h3 class="mql-h-xlarge no-margin">QUANTITATIVE</h3>
+                        </div>
+                        <div class="mql-scroll-reveal-content-2">
+                            <h3 class="mql-h-xlarge no-margin">UTILIZATION FOR ALL</h3>
+                        </div>
+                    </div>
+                    <div data-after="assets/img/detail2-after-opt.webp" data-type="image"
+                        data-before="assets/img/detail2-before-opt.webp"
+                        data-w-id="4d5eadf2-17dc-8ba8-bf3e-c2df9eb8a406"
+                        class="mql-scroll-reveal-preivew comparetool-trigger">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="v26-show-fixed-nav">
+            <div class="mql-bkgswitch bkg-color-space">
+                <div class="mql-safari-spacer"></div>
+                <div class="mql-section">
+                    <div class="mql-container mql-small text-align-center">
+                        <div class="v26-vertical-spacer-small"></div>
+                        <h1 class="mql-h-large">Simple Pine Script for Complex Tools</h1>
+                        <p class="mql-p-medium mql-color-slate no-margin">From coding to chart analysis, faster than ever before — we crafted our programming language to give you the power to create custom tools. Pine Script is elegantly minimalist, pre-integrated with data, and breaking your analysis limits.</p>
+                    </div>
+                    <div class="mql-container v26-ultra">
+                        <div class="v26-display-grid">
+                            <div class="v26-display-grid-item-large overflow-hidden">
+                                <div data-wf--v26-compare-slider-photo--variant="fill-center"
+                                    data-w-id="d258022f-7a8b-0b37-d029-6f91b05c4085"
+                                    class="v4-compare w-variant-51a30b1a-22c6-618e-094e-7eb88c40437f">
+                                    <div class="v4-compare-content w-variant-51a30b1a-22c6-618e-094e-7eb88c40437f">
+                                        <div class="v4-compare-behind w-variant-51a30b1a-22c6-618e-094e-7eb88c40437f">
+                                            <img src="assets/img/photo4-hero-2-before-compare-opt.webp" loading="lazy"
+                                                alt="" sizes="(max-width: 991px) 100vw, 1024px"
+                                                srcset="assets/img/photo4-hero-2-before-compare-opt-p-500.webp 500w, assets/img/photo4-hero-2-before-compare-opt-p-800.webp 800w, assets/img/photo4-hero-2-before-compare-opt-p-1080.webp 1080w, assets/img/photo4-hero-2-before-compare-opt-p-1600.webp 1600w, assets/img/photo4-hero-2-before-compare-opt-p-2000.webp 2000w, assets/img/photo4-hero-2-before-compare-opt-p-2600.webp 2600w, assets/img/photo4-hero-2-before-compare-opt.webp 3024w"
+                                                class="v4-compare-image w-variant-51a30b1a-22c6-618e-094e-7eb88c40437f" />
+                                        </div>
+                                        <div class="v4-compare-above w-variant-51a30b1a-22c6-618e-094e-7eb88c40437f">
+                                            <img src="assets/img/photo4-hero-2-after-compare-opt.webp" loading="lazy"
+                                                alt="" sizes="(max-width: 1279px) 100vw, 1843px"
+                                                srcset="assets/img/photo4-hero-2-after-compare-opt-p-500.webp 500w, assets/img/photo4-hero-2-after-compare-opt-p-800.webp 800w, assets/img/photo4-hero-2-after-compare-opt-p-1080.webp 1080w, assets/img/photo4-hero-2-after-compare-opt-p-1600.webp 1600w, assets/img/photo4-hero-2-after-compare-opt-p-2000.webp 2000w, assets/img/photo4-hero-2-after-compare-opt.webp 3024w"
+                                                class="v4-compare-image w-variant-51a30b1a-22c6-618e-094e-7eb88c40437f" />
+                                        </div>
+                                        <div class="v4-compare-line mobile-preslide">
+                                            <div
+                                                class="v26-slider-mobile-grab w-variant-51a30b1a-22c6-618e-094e-7eb88c40437f">
+                                                <img src="assets/img/slider-drag-icon.svg" loading="lazy" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="v26-scroll-reveal-label-left">
+                                            <div class="v26-label-pill">
+                                                <div class="v26-h-label">Before</div>
+                                            </div>
+                                        </div>
+                                        <div class="v26-scroll-reveal-label-right">
+                                            <div class="v26-label-pill">
+                                                <div class="v26-h-label">After</div>
+                                            </div>
+                                        </div>
+                                        <div data-after="assets/img/photo4-hero-2-after-compare-opt.webp"
+                                            data-type="image"
+                                            data-before="assets/img/photo4-hero-2-before-compare-opt.jpg"
+                                            class="preview-pos-bot-left comparetool-trigger">
+
+                                        </div>
+                                        <div class="v26-enhanced-by">
+                                            <div data-w-id="7303327a-0ef0-0d61-4493-1c793d707d5a" class="mql-by-matrix">
+                                                <div data-w-id="8b0b487b-4ff3-c1ff-8445-b3b60105167b"
+                                                    class="mql-by-matrix-hover"></div>
+                                                <img src="assets/img/MatrixQuantLabs-Logo.svg" loading="lazy" alt=""
+                                                    class="mql-logo" />
+                                                <div data-is-ix2-target="1" class="mql-simple-reveal"
+                                                    data-w-id="7303327a-0ef0-0d61-4493-1c793d707d5e"
+                                                    data-animation-type="lottie" data-src="assets/js/simple-reveal.json"
+                                                    data-loop="0" data-direction="1" data-autoplay="0"
+                                                    data-renderer="svg" data-default-duration="1.5" data-duration="0"
+                                                    data-ix2-initial-state="50"></div>
+                                            </div>
+                                        </div>
+                                        <div class="v26-chr-mouse">
+                                            <div class="v26-chr-label-position">
+                                                <div class="v26-label-pill">
+                                                    <div class="v26-h-label">Drag to reveal</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="v26-grid-content-reveal w-variant-51a30b1a-22c6-618e-094e-7eb88c40437f">
+                                            <h1 class="mql-h-xlarge no-margin">Denoise</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="v26-display-grid-columns">
+                                <div class="v26-display-grid-col">
+                                    <div class="v26-display-grid-item-large">
+                                        <div class="v26-click-hold-reveal">
+                                            <div class="v26-chr-reveal-wrap">
+                                                <img src="assets/img/photo-sharpen-before.webp" loading="lazy"
+                                                    draggable="false" alt="" sizes="100vw"
+                                                    srcset="assets/img/photo-sharpen-before-p-500.webp 500w, assets/img/photo-sharpen-before-p-800.webp 800w, assets/img/photo-sharpen-before.webp 1000w"
+                                                    class="v26-chr-image" />
+                                                <div class="v26-chr-bump"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="v26-vertical-spacer-medium"></div>
+                                    <div data-wf--v26-small-testimonial--variant="base" class="v25-testimonial-small">
+                                        <p class="mql-h-small no-margin">Ask our AI agent to find the best trading strategies, replicate any strategy in 1-click on TradingView, set alerts, and automate your trades like a pro.</p>
+                                    </div>
+                                    <div class="v26-vertical-spacer-medium"></div>
+                                </div>
+                                <div class="v26-display-grid-col">
+                                    <div class="v26-display-grid-item-medium">
+                                        <div data-w-id="acea0eb8-0da9-48b8-6091-6ded841a5914"
+                                            class="v26-click-hold-reveal">
+                                            <div class="v26-chr-reveal-wrap">
+                                                <img src="assets/img/photo-face-1122-before-opt.webp" loading="lazy"
+                                                    draggable="false" alt="" sizes="100vw"
+                                                    srcset="assets/img/photo-face-1122-before-opt-p-500.webp 500w, assets/img/photo-face-1122-before-opt-p-800.webp 800w, assets/img/photo-face-1122-before-opt.webp 1000w"
+                                                    class="v26-chr-image" />
+                                                <div class="v26-chr-bump"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="v26-display-grid-columns">
+                                        <div class="v26-display-grid-col">
+                                            <div class="v26-display-grid-item-medium">
+                                                <div data-w-id="acea0eb8-0da9-48b8-6091-6ded841a5914"
+                                                    class="v26-click-hold-reveal">
+                                                    <div class="v26-chr-reveal-wrap">
+                                                        <img src="assets/img/p3-lowlight-before-opt.webp" loading="lazy"
+                                                            draggable="false" alt="" sizes="100vw"
+                                                            srcset="assets/img/p3-lowlight-before-opt-p-500.webp 500w, assets/img/p3-lowlight-before-opt-p-800.webp 800w, assets/img/p3-lowlight-before-opt.webp 1000w"
+                                                            class="v26-chr-image" />
+                                                        <div class="v26-chr-bump"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="v26-display-grid-col">
+                                            <div class="v26-display-grid-item-small">
+                                                <div data-w-id="acea0eb8-0da9-48b8-6091-6ded841a5914"
+                                                    class="v26-click-hold-reveal">
+                                                    <div class="v26-chr-reveal-wrap">
+                                                        <img src="assets/img/lighting-before.webp" loading="lazy"
+                                                            draggable="false" alt="" sizes="100vw"
+                                                            srcset="assets/img/lighting-before-p-500.webp 500w, assets/img/lighting-before-p-800.webp 800w, assets/img/lighting-before.webp 1000w"
+                                                            class="v26-chr-image" />
+                                                        <div class="v26-chr-bump"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="v26-display-grid-item-medium">
+                                                <div data-w-id="acea0eb8-0da9-48b8-6091-6ded841a5914"
+                                                    class="v26-click-hold-reveal">
+                                                    <div class="v26-chr-reveal-wrap">
+                                                        <img src="assets/img/p3-removeit-before-opt.webp" loading="lazy"
+                                                            draggable="false" alt="" sizes="100vw"
+                                                            srcset="assets/img/p3-removeit-before-opt-p-500.webp 500w, assets/img/p3-removeit-before-opt-p-800.webp 800w, assets/img/p3-removeit-before-opt.webp 1000w"
+                                                            class="v26-chr-image" />
+                                                        <div class="v26-chr-bump"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mql-section">
+                    <div class="mql-container text-align-center"><img src="assets/img/product-local-render.webp"
+                            loading="lazy" width="859" sizes="(max-width: 767px) 100vw, 859px" alt=""
+                            srcset="assets/img/product-local-render-p-500.webp 500w, assets/img/product-local-render-p-800.webp 800w, assets/img/product-local-render-p-1080.webp 1080w, assets/img/product-local-render-p-1600.webp 1600w, assets/img/product-local-render.webp 1718w"
+                            class="v25-width-image" />
+                        <div class="v26-vertical-spacer-small"></div>
+                        <h1 class="mql-h-large">Integrated Developer Environment</h1>
+                        <p class="mql-p-medium mql-color-slate no-margin text-wrap-balance margin-auto max-w-35rem">You'll be able to test hypotheses and validate your research by using Pine Script®.</p>
+                    </div>
+                </div>
+                <div class="mql-section">
+                    <div class="mql-container text-align-center"><img src="assets/img/product-cloud-render.webp"
+                            loading="lazy" width="859" sizes="(max-width: 767px) 100vw, 859px" alt=""
+                            srcset="assets/img/product-cloud-render-p-500.webp 500w, assets/img/product-cloud-render-p-800.webp 800w, assets/img/product-cloud-render-p-1080.webp 1080w, assets/img/product-cloud-render-p-1600.webp 1600w, assets/img/product-cloud-render.webp 1718w"
+                            class="v25-width-image" />
+                        <div class="v26-vertical-spacer-small"></div>
+                        <h1 class="mql-h-large">Global Data Assets</h1>
+                        <p class="mql-p-medium mql-color-slate no-margin text-wrap-balance margin-auto max-w-35rem">TradingView provides instant access to global asset data to create meaningful reference points for case studies. Real-time data plus the deepest possible price histories available equal unparalleled research possibilities.</p>
+                    </div>
+                </div>
+                
+                <div class="mql-section">
+                    <div class="mql-container text-align-center mql-medium">
+                        <h3 class="mql-h-large mql-color-stone bot-m-2-5rem">Data Builds Confidence,
+                            <br><span class="mql-color-white">Engineered for Traders Who Execute.</span>
+                        </h3>
+                        <div class="vp-feature-wrap bot-m-3rem">
+                            <div class="icon-w-text"><img src="assets/img/icon-1.svg" loading="lazy" alt="">
+                                <h3 class="mql-h-xsmall no-margin">Precision Filters</h3>
+                            </div>
+                            <div class="icon-w-text"><img src="assets/img/icon-2.svg" loading="lazy" alt="">
+                                <h3 class="mql-h-xsmall no-margin">AI Optimization</h3>
+                            </div>
+                            <div class="icon-w-text"><img src="assets/img/icon-3.svg" loading="lazy" alt="">
+                                <h3 class="mql-h-xsmall no-margin">Backtested Strategies</h3>
+                            </div>
+                            <div class="icon-w-text"><img src="assets/img/icon-4.svg" loading="lazy" alt="">
+                                <h3 class="mql-h-xsmall no-margin">Quant Integration</h3>
+                            </div>
+                        </div>
+                        <div class="mql-button-wrap">
+                            <div class="mql-cta-button-wrap">
+                                <a data-w-id="mouseevents" href="#pricing"
+                                    class="mql-nav-button-medium w-variant-1c0a393b-4bc2-6cc0-ffea-3b77fd90d20a w-inline-block">
+                                    <div class="mql-nav-button-content static">
+                                        <div class="mql-nav-button-link-text no-hover">See Pricing</div>
+                                    </div>
+                                    <div class="mql-nav-button-content dynamic">
+                                        <div class="mql-nav-button-link-text">See Pricing</div>
+                                    </div>
+                                </a>
+                                <div class="mql-p-small color-stone no-margin">Options for teams of all sizes and
+                                    individuals.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mql-switch-white top-m-hero black">
+            <div id="pricing" class="mql-section">
+                <div class="mql-container text-align-center mql-small">
+                    <h1 class="mql-h-xlarge text-wrap-balance">Plans for Every Style of Trading</h1>
+                    <p class="mql-p-medium mql-color-grey200 no-margin">
+                        Pay yearly and get up to <span data-discount>20%</span> off!
+                    </p>
+                    <div class="v26-vertical-spacer"></div>
+                    <div data-filterid="pricingtype" class="v26-filter-wrap wbackground">
+                        <div data-filterid="pricingtype" data-filterset="monthly" class="v26-filter-segment active"><img
+                                src="assets/img/pricing/icon-blue-check.svg" loading="lazy" alt=""
+                                class="v26-filter-active-indicator" />
+                            <div class="v26-link-text">Monthly</div>
+                        </div>
+                        <div data-filterid="pricingtype" data-filterset="annual" class="v26-filter-segment"><img
+                                src="assets/img/pricing/icon-blue-check.svg" loading="lazy" alt=""
+                                class="v26-filter-active-indicator" />
+                            <div class="v26-link-text">Yearly</div>
+                            <div class="v26-h-label mql-color-green">Save</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mql-container">
+                    <div class="v26-pricing-container-new">
+                        <div id="pricing" class="mql-anchor"></div>
+                        <div>
+                            <div data-filterid-pricingtype="" data-filtertype-monthly="" class="v26-pricing-card-wrap">
+                                <div class="v26-pricing-card">
+                                    <div class="v26-pricing-card-image"><img sizes="(max-width: 570px) 100vw, 570px"
+                                            srcset="assets/img/pricing/pricing-level-1-500.webp 500w, assets/img/pricing/pricing-level-1.webp 570w"
+                                            alt="" loading="lazy" src="assets/img/pricing/pricing-level-1.webp"
+                                            class="mql-image-fill" />
+                                    </div>
+                                    <div class="v26-pricing-card-main">
+                                        <div class="flex-h-between-center col-1rem">
+                                            <div class="v26-license-holder">
+                                                <h2 class="mql-h-small no-margin v26-overflow-elip">Plus</h2>
+                                            </div>
+                                            <h2 class="mql-h-small no-margin">$66.88/mo</h2>
+                                        </div>
+                                        <div class="mql-label no-margin text-align-right mql-color-stone">Billed monthly
+                                        </div>
+                                    </div>
+                                    <div class="v26-pricing-buttons"><a data-w-id="mouseevents" href="#m"
+                                            class="mql-button-medium-white w-inline-block">
+                                            <div class="mql-nav-button-content static">
+                                                <div class="mql-link-text no-hover">Subscribe</div>
+                                            </div>
+                                            <div class="mql-nav-button-content dynamic">
+                                                <div class="mql-link-text">Subscribe</div>
+                                            </div>
+                                        </a></div>
+                                    <div class="v26-pricing-card-additional">
+                                        <div class="v26-h-label bot-m--5rem mql-color-stone">Features</div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Quant Foundation Course</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Signal Matrix Oscillator</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Trend-Range Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Ongoing Feature Updates</h1>
+                                        </div>
+                                        <div class="flex-v-left-top row--5rem">
+                                            <p class="mql-p-small no-margin mql-color-stone">All future updates and new
+                                                services are included in
+                                                your plan.</p>
+                                        </div>
+                                        <div class="v26-vertical-spacer w-variant-68193cc5-b2f1-287c-b3c9-b9a8a4cd98a9">
+                                        </div>
+                                        <div class="v26-h-label bot-m--25rem mql-color-stone">Upgrade Anytime — Just Pay
+                                            The Difference.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-filterid-pricingtype="" data-filtertype-annual="" class="v26-pricing-card-wrap">
+                                <div class="v26-pricing-card">
+                                    <div class="v26-pricing-card-image"><img sizes="(max-width: 570px) 100vw, 570px"
+                                            srcset="assets/img/pricing/pricing-level-1-500.webp 500w, assets/img/pricing/pricing-level-1.webp 570w"
+                                            alt="" loading="lazy" src="assets/img/pricing/pricing-level-1.webp"
+                                            class="mql-image-fill" />
+                                    </div>
+                                    <div class="v26-pricing-card-main">
+                                        <div class="flex-h-between-center col-1rem">
+                                            <div class="v26-license-holder">
+                                                <h2 class="mql-h-small no-margin v26-overflow-elip">Plus</h2>
+                                            </div>
+                                            <h2 class="mql-pricing-h2 no-margin"> $<span data-orig="">66.88</span> </h2>
+                                            <h5 class="mql-pricing-p no-margin">$<span data-monthly=""></span>/mo</h5>
+                                        </div>
+                                        <div class="mql-label no-margin text-align-right mql-color-grey300">$<span
+                                                data-yearly=""></span>/year
+                                        </div>
+                                    </div>
+                                    <div class="v26-pricing-buttons"><a data-w-id="mouseevents" href="#y"
+                                            class="mql-button-medium-white w-inline-block">
+                                            <div class="mql-nav-button-content static">
+                                                <div class="mql-link-text no-hover">Subscribe</div>
+                                            </div>
+                                            <div class="mql-nav-button-content dynamic">
+                                                <div class="mql-link-text">Subscribe</div>
+                                            </div>
+                                        </a></div>
+                                    <div class="v26-pricing-card-additional">
+                                        <div class="v26-h-label bot-m--5rem mql-color-stone">Features</div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Quant Foundation Course</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Signal Matrix Oscillator</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Trend-Range Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Ongoing Feature Updates</h1>
+                                        </div>
+                                        <div class="flex-v-left-top row--5rem">
+                                            <p class="mql-p-small no-margin mql-color-stone">All future updates and new
+                                                services are included in
+                                                your plan.</p>
+                                        </div>
+                                        <div class="v26-vertical-spacer w-variant-68193cc5-b2f1-287c-b3c9-b9a8a4cd98a9">
+                                        </div>
+                                        <div class="v26-h-label bot-m--25rem mql-color-stone">Upgrade Anytime — Just Pay
+                                            The Difference.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div data-filterid-pricingtype="" data-filtertype-monthly="" class="v26-pricing-card-wrap">
+                                <div class="v26-pricing-card">
+                                    <div class="v26-pricing-card-image"><img sizes="(max-width: 570px) 100vw, 570px"
+                                            srcset="assets/img/pricing/pricing-level-2-500.webp 500w, assets/img/pricing/pricing-level-2.webp 570w"
+                                            alt="" loading="lazy" src="assets/img/pricing/pricing-level-2.webp"
+                                            class="mql-image-fill" /></div>
+                                    <div class="v26-pricing-card-main">
+                                        <div class="flex-h-between-center col-1rem">
+                                            <div class="v26-license-holder">
+                                                <h2 class="mql-h-small no-margin v26-overflow-elip">Premium</h2>
+                                            </div>
+                                            <h2 class="mql-h-small no-margin">$108.88/mo</h2>
+                                        </div>
+                                        <div class="mql-label no-margin text-align-right mql-color-stone">Billed monthly
+                                        </div>
+                                    </div>
+                                    <div class="v26-pricing-buttons"><a data-w-id="mouseevents" href="#m"
+                                            class="mql-button-medium-white w-inline-block">
+                                            <div class="mql-nav-button-content static">
+                                                <div class="mql-link-text no-hover">Subscribe</div>
+                                            </div>
+                                            <div class="mql-nav-button-content dynamic">
+                                                <div class="mql-link-text">Subscribe</div>
+                                            </div>
+                                        </a></div>
+                                    <div class="v26-pricing-card-additional">
+                                        <div class="v26-h-label bot-m--5rem mql-color-stone">Features</div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Quant Advanced Course</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Signal Matrix Oscillator</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Trend-Range Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Harmonic Pattern Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Early Access to New Features</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Ongoing Feature Updates</h1>
+                                        </div>
+                                        <div class="flex-v-left-top row--5rem">
+                                            <p class="mql-p-small no-margin mql-color-stone">All future updates and new
+                                                services are included in
+                                                your plan.</p>
+                                        </div>
+                                        <div class="v26-vertical-spacer w-variant-68193cc5-b2f1-287c-b3c9-b9a8a4cd98a9">
+                                        </div>
+                                        <div class="v26-h-label bot-m--25rem mql-color-stone">Upgrade Anytime — Just Pay
+                                            The Difference.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-filterid-pricingtype="" data-filtertype-annual="" class="v26-pricing-card-wrap">
+                                <div class="v26-pricing-card">
+                                    <div class="v26-pricing-card-image"><img sizes="(max-width: 570px) 100vw, 570px"
+                                            srcset="assets/img/pricing/pricing-level-2-500.webp 500w, assets/img/pricing/pricing-level-2.webp 570w"
+                                            alt="" loading="lazy" src="assets/img/pricing/pricing-level-2.webp"
+                                            class="mql-image-fill" />
+                                    </div>
+                                    <div class="v26-pricing-card-main">
+                                        <div class="flex-h-between-center col-1rem">
+                                            <div class="v26-license-holder">
+                                                <h2 class="mql-h-small no-margin v26-overflow-elip">Premium</h2>
+                                            </div>
+                                            <h2 class="mql-pricing-h2 no-margin"> $<span data-orig="">108.88</span> 
+                                            </h2>
+                                            <h5 class="mql-pricing-p no-margin">$<span data-monthly=""></span>/mo</h5>
+                                        </div>
+                                        <div class="mql-label no-margin text-align-right mql-color-grey300">$<span
+                                                data-yearly=""></span>/year
+                                        </div>
+                                    </div>
+                                    <div class="v26-pricing-buttons"><a data-w-id="mouseevents" href="#y"
+                                            class="mql-button-medium-white w-inline-block">
+                                            <div class="mql-nav-button-content static">
+                                                <div class="mql-link-text no-hover">Subscribe</div>
+                                            </div>
+                                            <div class="mql-nav-button-content dynamic">
+                                                <div class="mql-link-text">Subscribe</div>
+                                            </div>
+                                        </a></div>
+                                    <div class="v26-pricing-card-additional">
+                                        <div class="v26-h-label bot-m--5rem mql-color-stone">Features</div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Quant Advanced Course</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Signal Matrix Oscillator</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Trend-Range Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Harmonic Pattern Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Early Access to New Features</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Ongoing Feature Updates</h1>
+                                        </div>
+                                        <div class="flex-v-left-top row--5rem">
+                                            <p class="mql-p-small no-margin mql-color-stone">All future updates and new
+                                                services are included in
+                                                your plan.</p>
+                                        </div>
+                                        <div class="v26-vertical-spacer w-variant-68193cc5-b2f1-287c-b3c9-b9a8a4cd98a9">
+                                        </div>
+                                        <div class="v26-h-label bot-m--25rem mql-color-stone">Upgrade Anytime — Just Pay
+                                            The Difference.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="v26-pricing-studio-wrap">
+                            <div data-filtertype-monthly="" data-filterid-pricingtype="">
+                                <div class="v26-pricing-card dark">
+                                    <div class="v26-pricing-card-image"><img sizes="(max-width: 570px) 100vw, 570px"
+                                            srcset="assets/img/pricing/pricing-level-3-500.webp 500w, assets/img/pricing/pricing-level-3.webp 570w"
+                                            alt="" loading="lazy" src="assets/img/pricing/pricing-level-3.webp"
+                                            class="mql-image-fill" />
+                                    </div>
+                                    <div class="v26-pricing-card-main">
+                                        <div class="flex-h-between-center">
+                                            <h2 class="mql-h-small no-margin">Ultimate</h2>
+                                            <h2 class="mql-h-small no-margin">$168.88/mo</h2>
+                                        </div>
+                                        <div class="mql-label no-margin text-align-right mql-color-stone">Billed monthly
+                                        </div>
+                                    </div>
+                                    <div class="v26-pricing-buttons"><a data-w-id="mouseevents" href="#m"
+                                            class="mql-button-medium-blue w-variant-ecc8d7fe-e174-5c12-6adb-a98200da83dc w-inline-block">
+                                            <div class="mql-nav-button-content static">
+                                                <div class="mql-link-text no-hover">Subscribe</div>
+                                            </div>
+                                            <div class="mql-nav-button-content dynamic">
+                                                <div class="mql-link-text">Subscribe</div>
+                                            </div>
+                                        </a></div>
+                                    <div class="v26-pricing-card-additional">
+                                        <div class="v26-h-label mql-color-slate bot-m-5rem">Features</div>
+                                        <div class="flex-v-left-top row--5rem">
+                                            <div class="v26-studio-app-icons">
+                                                <div data-w-id="imgcaption"
+                                                    class="v26-studio-app-icon v26-sutdio-app-icon"><img
+                                                        src="assets/img/pricing/icon-trading-system-1.svg"
+                                                        loading="lazy" alt="" class="mql-image-fill" />
+                                                    <div class="v25-tooltip">
+                                                        <div class="v26-h-label no-wrap">Trend-Range</div>
+                                                        <div class="v25-tooltip-indicator"></div>
+                                                    </div>
+                                                </div>
+                                                <div data-w-id="imgcaption"
+                                                    class="v26-studio-app-icon v26-sutdio-app-icon"><img
+                                                        src="assets/img/pricing/icon-trading-system-2.svg"
+                                                        loading="lazy" alt="" class="mql-image-fill" />
+                                                    <div class="v25-tooltip">
+                                                        <div class="v26-h-label no-wrap">Smart Harmonic</div>
+                                                        <div class="v25-tooltip-indicator"></div>
+                                                    </div>
+                                                </div>
+                                                <div data-w-id="imgcaption"
+                                                    class="v26-studio-app-icon v26-sutdio-app-icon"><img
+                                                        src="assets/img/pricing/icon-trading-system-3.svg"
+                                                        loading="lazy" alt="" class="mql-image-fill" />
+                                                    <div class="v25-tooltip">
+                                                        <div class="v26-h-label no-wrap">Trading Suite</div>
+                                                        <div class="v25-tooltip-indicator"></div>
+                                                    </div>
+                                                </div>
+                                                <div data-w-id="imgcaption"
+                                                    class="v26-studio-app-icon v26-sutdio-app-icon"><img
+                                                        src="assets/img/pricing/icon-trading-system-4.svg"
+                                                        loading="lazy" alt="" class="mql-image-fill" />
+                                                    <div class="v25-tooltip">
+                                                        <div class="v26-h-label no-wrap">More</div>
+                                                        <div class="v25-tooltip-indicator"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Quant Master Course</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Signal Matrix Oscillator</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Trend-Range Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Harmonic Pattern Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Real-Time Signal Alert Service</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Historical Data Backtesting Service</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Early Access to New Features</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Ongoing Feature Updates</h1>
+                                        </div>
+                                        <div class="flex-v-left-top row--5rem">
+                                            <p class="mql-p-small no-margin mql-color-stone">All future updates and new
+                                                services are included in
+                                                your plan.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-filtertype-annual="" data-filterid-pricingtype="">
+                                <div class="v26-pricing-card dark">
+                                    <div class="v26-pricing-card-image"><img sizes="(max-width: 570px) 100vw, 570px"
+                                            srcset="assets/img/pricing/pricing-level-3-500.webp 500w, assets/img/pricing/pricing-level-3.webp 570w"
+                                            alt="" loading="lazy" src="assets/img/pricing/pricing-level-3.webp"
+                                            class="mql-image-fill" />
+                                    </div>
+                                    <div class="v26-pricing-card-main">
+                                        <div class="flex-h-between-center col-1rem">
+                                            <div class="v26-license-holder">
+                                                <h2 class="mql-h-small no-margin v26-overflow-elip">Ultimate</h2>
+                                            </div>
+                                            <h2 class="mql-pricing-h2 no-margin"> $<span data-orig="">168.88</span> 
+                                            </h2>
+                                            <h5 class="mql-pricing-p no-margin">$<span data-monthly=""></span>/mo</h5>
+                                        </div>
+                                        <div class="mql-label no-margin text-align-right mql-color-grey300">$<span
+                                                data-yearly=""></span>/year
+                                        </div>
+                                    </div>
+                                    <div class="v26-pricing-buttons"><a data-w-id="mouseevents" href="#y"
+                                            class="mql-button-medium-blue w-variant-ecc8d7fe-e174-5c12-6adb-a98200da83dc w-inline-block">
+                                            <div class="mql-nav-button-content static">
+                                                <div class="mql-link-text no-hover">Subscribe</div>
+                                            </div>
+                                            <div class="mql-nav-button-content dynamic">
+                                                <div class="mql-link-text">Subscribe</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="v26-pricing-card-additional">
+                                        <div class="v26-h-label mql-color-slate bot-m-5rem">Features</div>
+                                        <div class="flex-v-left-top row--5rem">
+                                            <div class="v26-studio-app-icons">
+                                                <div data-w-id="imgcaption"
+                                                    class="v26-studio-app-icon v26-sutdio-app-icon"><img
+                                                        src="assets/img/pricing/icon-trading-system-1.svg"
+                                                        loading="lazy" alt="" class="mql-image-fill" />
+                                                    <div class="v25-tooltip">
+                                                        <div class="v26-h-label no-wrap">Trend-Range</div>
+                                                        <div class="v25-tooltip-indicator"></div>
+                                                    </div>
+                                                </div>
+                                                <div data-w-id="imgcaption"
+                                                    class="v26-studio-app-icon v26-sutdio-app-icon"><img
+                                                        src="assets/img/pricing/icon-trading-system-2.svg"
+                                                        loading="lazy" alt="" class="mql-image-fill" />
+                                                    <div class="v25-tooltip">
+                                                        <div class="v26-h-label no-wrap">Smart Harmonic</div>
+                                                        <div class="v25-tooltip-indicator"></div>
+                                                    </div>
+                                                </div>
+                                                <div data-w-id="imgcaption"
+                                                    class="v26-studio-app-icon v26-sutdio-app-icon"><img
+                                                        src="assets/img/pricing/icon-trading-system-3.svg"
+                                                        loading="lazy" alt="" class="mql-image-fill" />
+                                                    <div class="v25-tooltip">
+                                                        <div class="v26-h-label no-wrap">Trading Suite</div>
+                                                        <div class="v25-tooltip-indicator"></div>
+                                                    </div>
+                                                </div>
+                                                <div data-w-id="imgcaption"
+                                                    class="v26-studio-app-icon v26-sutdio-app-icon"><img
+                                                        src="assets/img/pricing/icon-trading-system-4.svg"
+                                                        loading="lazy" alt="" class="mql-image-fill" />
+                                                    <div class="v25-tooltip">
+                                                        <div class="v26-h-label no-wrap">More</div>
+                                                        <div class="v25-tooltip-indicator"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Quant Master Course</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Signal Matrix Oscillator</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Trend-Range Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Harmonic Pattern Trading System</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Real-Time Signal Alert Service</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Historical Data Backtesting Service</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Early Access to New Features</h1>
+                                        </div>
+                                        <div class="flex-h-center-left col--5rem"><img width="16" loading="lazy"
+                                                alt="Check mark" src="assets/img/pricing/icon-check-blue.svg" />
+                                            <h1 class="mql-h-xsmall no-margin">Ongoing Feature Updates</h1>
+                                        </div>
+                                        <div class="flex-v-left-top row--5rem">
+                                            <p class="mql-p-small no-margin mql-color-stone">All future updates and new
+                                                services are included in
+                                                your plan.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mql-section">
+            <div class="mql-container mql-medium text-align-center">
+                <div class="mql-faq w-dropdown">
+                    <div class="mql-faq-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <h2 class="mql-h-small no-margin text-wrap-normal">I’m a beginner. Can i use it?</h2>
+                    </div>
+                    <nav class="mql-faq-content w-dropdown-list">
+                        <p class="mql-faq-p-medium mql-color-slate">
+                            ・Absolutely. The system interface is intuitive and well-structured, allowing even beginners
+                            to get started
+                            quickly. We also provide beginner guides, tutorial videos, and real-time customer support.
+                        </p>
+                    </nav>
+                </div>
+                <div class="mql-faq w-dropdown">
+                    <div class="mql-faq-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <h2 class="mql-h-small no-margin text-wrap-normal">Do I need to install any software?</h2>
+                    </div>
+                    <nav class="mql-faq-content w-dropdown-list">
+                        <p class="mql-faq-p-medium mql-color-slate">
+                            ・No installation is required. All functions run entirely on the TradingView cloud, so you
+                            can start using it
+                            immediately after login.
+                            <br>・TradingView fully supports PC, Mac, and mobile devices — once you sign in with your
+                            authorized account,
+                            your settings and signals stay synchronized across all devices anytime, anywhere.
+                        </p>
+                    </nav>
+                </div>
+                <div class="mql-faq w-dropdown">
+                    <div class="mql-faq-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <h2 class="mql-h-small no-margin text-wrap-normal">Which markets do your indicators support?
+                        </h2>
+                    </div>
+                    <nav class="mql-faq-content w-dropdown-list">
+                        <p class="mql-faq-p-medium mql-color-slate">
+                            ・They work on almost all major global markets — including stocks, cryptocurrencies, forex,
+                            futures, and
+                            commodities.
+                            <br>・As long as it’s available on a TradingView chart, you can use our indicators on it.
+                        </p>
+                    </nav>
+                </div>
+                <div class="mql-faq w-dropdown">
+                    <div class="mql-faq-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <h2 class="mql-h-small no-margin text-wrap-normal">Will the tool automatically alert me to buy
+                            or sell
+                            signals?</h2>
+                    </div>
+                    <nav class="mql-faq-content w-dropdown-list">
+                        <p class="mql-faq-p-medium mql-color-slate">
+                            ・Yes. Each indicator includes a built-in real-time alert feature.
+                            <br>・When market conditions meet the signal criteria, you’ll receive an instant notification
+                            — no need to
+                            stare at the charts all day.
+                        </p>
+                    </nav>
+                </div>
+                <div class="mql-faq w-dropdown">
+                    <div class="mql-faq-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <h2 class="mql-h-small no-margin text-wrap-normal">Are the indicator signals accurate?</h2>
+                    </div>
+                    <nav class="mql-faq-content w-dropdown-list">
+                        <p class="mql-faq-p-medium mql-color-slate">
+                            ・MatrixQuant indicators are not designed to predict the future — they are built to help you
+                            capture market
+                            rhythm faster, see structure clearly, filter out noise, and reduce emotional trading.
+                            <br>
+                        </p>
+                    </nav>
+                </div>
+                <div class="mql-faq w-dropdown">
+                    <div class="mql-faq-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <h2 class="mql-h-small no-margin text-wrap-normal">Does it support automated trading?</h2>
+                    </div>
+                    <nav class="mql-faq-content w-dropdown-list">
+                        <p class="mql-faq-p-medium mql-color-slate">
+                            ・We provide partially automated strategy modules for backtesting, signal triggering, and
+                            trade execution.
+                            <br>・However, strategy parameters should be fine-tuned manually according to your target
+                            market and
+                            timeframe for optimal results.
+                        </p>
+                    </nav>
+                </div>
+                <div class="mql-faq w-dropdown">
+                    <div class="mql-faq-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <h2 class="mql-h-small no-margin text-wrap-normal">Can I upgrade or request a refund after
+                            subscribing?</h2>
+                    </div>
+                    <nav class="mql-faq-content w-dropdown-list">
+                        <p class="mql-faq-p-medium mql-color-slate">
+                            ・Upgrade: You can upgrade anytime by paying the price difference.
+                            <br>・Refund: Monthly plans are eligible for a full refund within 7 days.
+                            <br>・Annual plans are offered at a discounted rate and therefore non-refundable.
+                        </p>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="mql-nav-divider-1"></div>
+        <div class="mql-footer">
+            <div class="mql-container mql-large">
+                <div class="mql-footer-top">
+                    <div class="mql-footer-right">
+                        <div class="mql-footer-content">
+                            <div class="mql-link-list">
+                                <a href="#top" class="mql-link-text mql-hover">Top</a>
+                                <a href="#" class="mql-link-text mql-hover">Disclaimer</a>
+                                <a href="#" class="mql-link-text mql-hover">Privacy Policy</a>
+                                <a href="#" class="mql-link-text mql-hover">Terms of Service</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mql-footer-statement">
+                        <p class="mql-p-statement mql-color-aaa">
+                            MatrixQuant Labs does not provide financial services. The software provided are tools
+                            designed to help users
+                            gain insights into chart metrics.
+                            <br>Trading and investing involve significant risk, and many participants may lose money
+                            through such
+                            activities. Decisions to buy, sell, hold, or trade in securities, commodities, or other
+                            investments involve
+                            risk and should be made based on the advice of qualified financial professionals. Past
+                            performance does not
+                            guarantee future results.
+                            <br>All content provided on this site is for educational purposes only and is not intended
+                            to, and should
+                            not be, construed as financial advice.
+                            <br>This does not represent our full Disclaimer. Please read our <span><a href="#"
+                                    target="_blank">Full
+                                    Disclaimer</a></span>.
+                        </p>
+                    </div>
+                    <div class="mql-cta-logo-wrap">
+                        <div class="mql-footer-logo">
+                            <img src="assets/img/MatrixQuantLabs-Logo1.svg" loading="lazy" alt=""
+                                class="mql-product-icon mql-cta-logo">
+                            <!--span class="mql-color-pro">—</span-->
+                            <!--h2 class="mql-h-medium-footer no-margin">矩 陣 量 化 實 驗 室</h2-->
+                        </div>
+                        <div class="mql-social-links">
+                            <a href="#" class="mql-footer-social-link">
+                                <img src="assets/img/x-white.svg" loading="lazy" alt="" />
+                            </a>
+                            <a href="#" class="mql-footer-social-link">
+                                <img src="assets/img/TradingView-White.svg" loading="lazy" alt="" />
+                            </a>
+                            <a href="#" class="mql-footer-social-link">
+                                <img src="assets/img/telegram-a-white.svg" loading="lazy" alt="" />
+                            </a>
+                            <a href="#" class="mql-footer-social-link"><img src="assets/img/telegram-a-white.svg"
+                                    loading="lazy" alt="" />
+                            </a>
+                            <a href="#" class="mql-footer-social-link">
+                                <img src="assets/img/TradingView-White.svg" loading="lazy" alt="" />
+                            </a>
+                        </div>
+                        <div class="mql-footer-bot">
+                            <p class="mql-p-small-footer mql-color-slate no-margin">© 2025 MatrixQuant Labs. All Rights
+                                Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="embed-compare-v4 w-embed w-script"> <!-- 图片拖动切换 -->
+                <script>
+                    const allCompare4 = document.querySelectorAll(".v4-compare");
+                    const compareObserver = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add("inview");
+                                    console.log("inview");
+                                } else {
+                                    entry.target.classList.remove("inview");
+                                    console.log("not in view");
+                                }
+                            });
+                        },
+                        { threshold: 0.5 },
+                    );
+
+                    //init compare
+                    if (allCompare4.length > 0) {
+                        const windowSize = window.matchMedia("(max-width: 991px)");
+
+                        allCompare4.forEach((compare) => {
+                            if (windowSize.matches) {
+                                compare
+                                    .querySelector(".v26-slider-mobile-grab")
+                                    .addEventListener("pointerdown", CompareStart);
+                            } else {
+                                compare.addEventListener("pointerdown", CompareStart);
+                            }
+
+                            compare.addEventListener("pointermove", CompareMove);
+                            compare.addEventListener("pointerup", CompareEnd);
+                            compare.addEventListener("pointercancel", CompareEnd);
+
+                            // Prevent context menu on long press
+                            compare.addEventListener("contextmenu", (e) => {
+                                if (e.currentTarget.classList.contains("dragging")) {
+                                    e.preventDefault();
+                                }
+                            });
+
+                            compareObserver.observe(compare);
+
+                            function CompareMove(event) {
+                                if (!compare.classList.contains("dragging")) {
+                                    return;
+                                }
+
+                                console.log("dragging");
+
+                                const rect = compare.getBoundingClientRect();
+                                const disFromRight = event.clientX - rect.left;
+                                let percentageOfLength =
+                                    (disFromRight / compare.offsetWidth) * 100;
+
+                                percentageOfLength = Math.max(
+                                    0,
+                                    Math.min(100, percentageOfLength),
+                                );
+
+                                const allImages = compare.querySelectorAll(".v4-compare-image");
+                                allImages.forEach((image) => {
+                                    image.style.transform = `translateX(${((percentageOfLength / 100) * 1 - 0.5) * -1}%)`;
+                                });
+
+                                compare.querySelector(".v4-compare-above").style.clipPath =
+                                    `inset(0 0 0 ${percentageOfLength}%)`;
+                                compare.querySelector(".v4-compare-line").style.left =
+                                    `${percentageOfLength}%`;
+                            }
+
+                            function CompareStart(event) {
+                                if (event.target.closest(".comparetool-trigger")) {
+                                    return;
+                                }
+
+                                compare.classList.add("dragging");
+                                compare
+                                    .querySelector(".v4-compare-line")
+                                    .classList.remove("mobile-preslide");
+
+                                // Prevent default to avoid text selection and scrolling
+                                event.preventDefault();
+
+                                // Set pointer capture for smooth dragging
+                                compare.setPointerCapture(event.pointerId);
+
+                                console.log("drag started");
+
+                                // Initial position update
+                                CompareMove(event);
+                            }
+
+                            function CompareEnd(event) {
+                                if (!compare.classList.contains("dragging")) {
+                                    return;
+                                }
+
+                                // Release pointer capture
+                                compare.releasePointerCapture(event.pointerId);
+
+                                compare.querySelector(".v4-compare-above").style.clipPath =
+                                    `inset(0 0 0 50%)`;
+                                compare.querySelector(".v4-compare-line").style.left = `50%`;
+                                compare.classList.remove("dragging");
+                                compare
+                                    .querySelector(".v4-compare-line")
+                                    .classList.add("mobile-preslide");
+
+                                const allImages = compare.querySelectorAll(".v4-compare-image");
+                                allImages.forEach((image) => {
+                                    image.style.transform = ``;
+                                });
+
+                                console.log("drag ended");
+                            }
+                        });
+                    }
+                </script>
+
+                <style>
+                    :root {
+                        --out-curve: cubic-bezier(0, 0.25, 0.5, 1);
+                    }
+
+                    .v4-compare-above {
+                        clip-path: inset(0 0 0 100%);
+                        transition: clip-path 1s ease-in-out;
+                    }
+
+                    .v4-compare.inview .v4-compare-above {
+                        clip-path: inset(0 0 0 50%);
+                    }
+
+                    .v4-compare-line {
+                        opacity: 0.5;
+                        transition:
+                            left 1s ease-in-out,
+                            opacity 0.1s ease-in-out;
+                        left: 100%;
+                    }
+
+                    .v4-compare.inview .v4-compare-line {
+                        left: 50%;
+                    }
+
+                    .v4-compare:hover .v4-compare-line {
+                        opacity: 1;
+                    }
+
+                    .v4-compare.dragging {
+                        cursor: grabbing;
+                    }
+
+                    .v4-compare.dragging .v4-compare-above {
+                        transition: clip-path 0s ease-in-out;
+                    }
+
+                    .v4-compare.dragging .v4-compare-line {
+                        transition:
+                            left 0s ease-in-out,
+                            opacity 0.1s ease-in-out;
+                    }
+
+                    .v26-grid-content-reveal {
+                        opacity: 1;
+                        transition: opacity 0.2s ease-in-out;
+                    }
+
+                    .v4-compare.dragging .v26-grid-content-reveal {
+                        opacity: 0;
+                    }
+
+                    .v4-compare .v26-chr-mouse .v26-label-pill,
+                    .v4-compare.dragging:hover .v26-chr-mouse .v26-label-pill {
+                        opacity: 0;
+                        visibility: hidden;
+
+                        transition: opacity 0.1s ease-in-out;
+                    }
+
+                    .v4-compare.dragging .v4-compare-image {
+                        scale: 1.025;
+                    }
+
+                    .v4-compare .v4-compare-image {
+                        transition:
+                            scale 0.5s var(--out-curve),
+                            transform 0.1s var(--out-curve);
+                    }
+
+                    @media (min-width: 992px) {
+                        .v4-compare:hover .v26-chr-mouse .v26-label-pill {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+
+                        .v4-compare:hover .v4-compare-content {
+                            filter: brightness(1.05);
+                        }
+
+                        .v4-compare {
+                            cursor: grab;
+                        }
+                    }
+
+                    @media (max-width: 991px) {
+                        .v4-compare .v26-chr-mouse {
+                            display: none;
+                        }
+
+                        .v4-compare-line {
+                            opacity: 1;
+                        }
+
+                        .v26-slider-mobile-grab {
+                            animation: pulse 1.5s ease-in-out infinite;
+                        }
+
+                        .v4-compare.dragging .v4-compare-image {
+                            scale: 1.15;
+                        }
+
+                        @keyframes pulse {
+                            0% {
+                                transform: scale(1);
+                                outline: rgba(255, 255, 255, 0.4) 0rem solid;
+                            }
+
+                            50% {
+                                transform: scale(1.1);
+                            }
+
+                            100% {
+                                transform: scale(1);
+                                outline: rgba(255, 255, 255, 0) 1rem solid;
+                            }
+                        }
+                    }
+                </style>
+            </div>
+
+
+            <div class="w-embed w-script"> <!-- 顶部拖动效果 -->
+                <script>
+                    const allMaginifiers = document.querySelectorAll(
+                        ".before-after-enhance-box",
+                    );
+
+                    if (allMaginifiers.length > 0) {
+                        const windowSize = window.matchMedia("(max-width: 767px)");
+                        const scaleDivisor = 1.5;
+                        let boxEase = 0.2;
+                        let imageEase = 0.035;
+                        let mousex = 0;
+                        let mousey = 0;
+                        const dampThreshold = 0.01;
+
+                        allMaginifiers.forEach((component) => {
+                            // component logic
+                            component.style.setProperty("--scale", scaleDivisor);
+
+                            let rafId = null;
+                            let rect = null;
+                            let imageRect = null;
+                            let enhanceBox = null;
+                            let enhanceBoxRect = null;
+                            let isDragging = false;
+
+                            // target and current offsets (px)
+                            let tx = 0,
+                                ty = 0;
+                            let cx = 0,
+                                cy = 0;
+
+                            let rectHeight = 1;
+                            let rectWidth = 1;
+
+                            let imagetx = 0,
+                                imagety = 0;
+                            let imagecx = 0,
+                                imagecy = 0;
+
+                            //resize on load
+                            window.onload = getSize;
+
+                            function animate() {
+                                getSize();
+
+                                // lerp current toward target
+                                cx += (tx - cx) * boxEase;
+                                cy += (ty - cy) * boxEase;
+
+                                component.style.setProperty(
+                                    "--cliptop",
+                                    `${((rectHeight / 2 + cy) / rectHeight) * 100}%`,
+                                );
+                                component.style.setProperty(
+                                    "--clipleft",
+                                    `${((rectWidth / 2 + cx) / rectWidth) * 100}%`,
+                                );
+                                component.style.setProperty(
+                                    "--clipbottom",
+                                    `${(1 - (rectHeight / 2 + cy) / rectHeight) * 100}%`,
+                                );
+                                component.style.setProperty(
+                                    "--clipright",
+                                    `${(1 - (rectWidth / 2 + cx) / rectWidth) * 100}%`,
+                                );
+
+                                imagecx += (imagetx - imagecx) * imageEase;
+                                imagecy += (imagety - imagecy) * imageEase;
+
+                                component.style.setProperty("--move-x", `${cx}px`);
+                                component.style.setProperty("--move-y", `${cy}px`);
+                                component.style.setProperty("--image-move-x", `${imagecx}px`);
+                                component.style.setProperty("--image-move-y", `${imagecy}px`);
+
+                                // keep animating while we're moving meaningfully
+                                if (
+                                    Math.abs(tx - cx) > dampThreshold ||
+                                    Math.abs(ty - cy) > dampThreshold
+                                ) {
+                                    rafId = requestAnimationFrame(animate);
+                                } else {
+                                    rafId = null; // stop loop until next move
+                                }
+                            }
+
+                            function start(e) {
+                                console.log("start");
+
+                                isDragging = true;
+                                component.classList.add("active");
+                                boxEase = 0.2;
+
+                                component.querySelector(".v26-h-label").innerHTML = "Enhanced";
+                                rect = component.getBoundingClientRect();
+                                rectHeight = rect.height;
+                                rectWidth = rect.width;
+                                imageRect = component
+                                    .querySelector(".baeb-image")
+                                    .getBoundingClientRect();
+                                enhanceBox = component.querySelector(".baeb-enhance-box");
+                                enhanceBoxRect = enhanceBox.getBoundingClientRect();
+
+                                // Prevent default to avoid text selection and scrolling
+                                e.preventDefault();
+
+                                // Set pointer capture for smooth dragging
+                                component.setPointerCapture(e.pointerId);
+
+                                onMove(e);
+                            }
+
+                            function onMove(e) {
+                                if (!isDragging) return;
+
+                                e.preventDefault();
+
+                                const x = e.clientX - rect.left;
+                                const y = e.clientY - rect.top;
+
+                                mousex = x;
+                                mousey = y;
+
+                                // center-relative movement, softened
+                                tx = x - rect.width / 2;
+                                ty = y - rect.height / 2;
+                                imagetx = tx / scaleDivisor;
+                                imagety = ty / scaleDivisor;
+
+                                // kick the loop if it's not running
+                                if (!rafId) rafId = requestAnimationFrame(animate);
+                            }
+
+                            function onEnd(e) {
+                                if (!isDragging) return;
+
+                                component.querySelector(".v26-h-label").innerHTML =
+                                    "Tap and hold";
+
+                                isDragging = false;
+
+                                // Release pointer capture
+                                component.releasePointerCapture(e.pointerId);
+
+                                // ease back to 0 using same loop
+                                boxEase = 0.08;
+
+                                tx = 0;
+                                ty = 0;
+                                imagetx = 0;
+                                imagety = 0;
+
+                                if (!rafId) rafId = requestAnimationFrame(animate);
+
+                                component.classList.remove("active");
+                                enhanceBox = null;
+                                enhanceBoxRect = null;
+                                rect = null;
+                                imageRect = null;
+                            }
+
+                            function getSize() {
+                                enhanceBox = component.querySelector(".baeb-enhance-box");
+                                enhanceBoxRect = enhanceBox.getBoundingClientRect();
+                                component
+                                    .querySelector(".baeb-image-afterwrap")
+                                    .style.setProperty(
+                                        "--clipsizeX",
+                                        `${getComputedStyle(enhanceBox).width}`,
+                                    );
+                                component
+                                    .querySelector(".baeb-image-afterwrap")
+                                    .style.setProperty(
+                                        "--clipsizeY",
+                                        `${getComputedStyle(enhanceBox).height}`,
+                                    );
+                            }
+
+                            // Use pointer events for mouse/touch/pen with click and drag
+                            // Using hold timer instead component.addEventListener("pointerdown", start);
+                            component.addEventListener("pointermove", (e) => {
+                                if (isDragging) {
+                                    onMove(e);
+                                }
+                            });
+
+                            if (windowSize.matches) {
+                                component
+                                    .querySelector(".baeb-label-move")
+                                    .addEventListener("pointerdown", (e) => {
+                                        start(e);
+                                    });
+                            } else {
+                                component.addEventListener("pointerdown", (e) => {
+                                    start(e);
+                                });
+                            }
+
+                            component.addEventListener("pointerup", onEnd);
+                            component.addEventListener("pointercancel", onEnd);
+
+                            // Prevent context menu on long press
+                            component.addEventListener("contextmenu", (e) => {
+                                if (isDragging) e.preventDefault();
+                            });
+
+                            // keep rect valid if layout changes while dragging
+                            window.addEventListener("resize", () => {
+                                getSize();
+                                if (rect) rect = component.getBoundingClientRect();
+                                if (imageRect)
+                                    imageRect = component
+                                        .querySelector(".baeb-image")
+                                        .getBoundingClientRect();
+                            });
+                        });
+                    }
+                </script>
+
+                <style>
+                    :root {
+                        --anim-curve: cubic-bezier(0.5, 0.1, 0.2, 1);
+                        --anim-curve-subtle: cubic-bezier(0.3, 0, 0.6, 1);
+                        --out-curve: cubic-bezier(0, 0.25, 0.5, 1);
+                    }
+
+                    .before-after-enhance-box {
+                        position: relative;
+                        overflow: hidden;
+                        cursor: crosshair;
+
+                        -webkit-user-select: none;
+                        /* Safari */
+                        -moz-user-select: none;
+                        /* Firefox */
+                        -ms-user-select: none;
+                        /* IE 10+ */
+                        user-select: none;
+
+                        --cliptop: 50%;
+                        --clipleft: 50%;
+                        --clipbottom: 50%;
+                        --clipright: 50%;
+                    }
+
+                    .before-after-enhance-box:hover .baeb-image {
+                        scale: 1.025;
+                        filter: brightness(1.05);
+                    }
+
+                    .before-after-enhance-box .baeb-image {
+                        position: absolute;
+                        transform: translate3d(calc(var(--image-move-x) * -1),
+                                calc(var(--image-move-y) * -1),
+                                0);
+                        transition:
+                            height 1.5s var(--anim-curve-subtle),
+                            width 1.5s var(--anim-curve-subtle),
+                            scale 0.5s var(--out-curve);
+                        will-change: transform;
+                        pointer-events: none;
+                    }
+
+                    .before-after-enhance-box.active .baeb-image {
+                        height: 250%;
+                        width: 250%;
+                    }
+
+                    .before-after-enhance-box .baeb-image-afterwrap {
+                        --clipsizeY: 30rem;
+                        --clipsizeX: 30rem;
+
+                        clip-path: inset(calc(var(--cliptop) - var(--clipsizeY) / 2) calc(var(--clipright) - var(--clipsizeX) / 2) calc(var(--clipbottom) - var(--clipsizeY) / 2) calc(var(--clipleft) - var(--clipsizeX) / 2) round 12px);
+                    }
+
+                    .before-after-enhance-box .baeb-enhance-box {
+                        width: 30rem;
+                        height: 30rem;
+
+                        transition:
+                            height 0.35s var(--anim-curve),
+                            width 0.35s var(--anim-curve);
+
+                        transform: translate(var(--move-x), var(--move-y));
+
+                        will-change: transform;
+                    }
+
+                    .baeb-enhance-box {
+                        max-width: calc(100% - 2rem);
+                        max-height: calc(100% - 2rem);
+                    }
+
+                    .before-after-enhance-box.active .baeb-enhance-box {
+                        width: 20rem;
+                        height: 20rem;
+                    }
+
+                    .baeb-label-move {
+                        animation: pulse 1.5s infinite;
+                    }
+
+                    .before-after-enhance-box.active .baeb-label-move {
+                        animation: none;
+                    }
+
+                    @keyframes pulse {
+                        0% {
+                            transform: scale(1);
+                            outline: rgba(255, 255, 255, 0.4) 0rem solid;
+                        }
+
+                        50% {
+                            transform: scale(1.1);
+                        }
+
+                        100% {
+                            transform: scale(1);
+                            outline: rgba(255, 255, 255, 0) 1rem solid;
+                        }
+                    }
+
+                    @media (max-width: 991px) {
+                        .before-after-enhance-box .baeb-enhance-box {
+                            width: calc(100% - 6rem);
+                            height: calc(100% - 6rem);
+                        }
+
+                        .before-after-enhance-box.active .baeb-enhance-box {
+                            width: calc(100% - 10rem);
+                            height: calc(100% - 10rem);
+                        }
+                    }
+                </style>
+            </div>
+            <div class="w-embed w-script"> <!-- 报价表 -->
+                <script>
+                    const allFilterParents = document.querySelectorAll(".v26-filter-wrap");
+
+                    if (allFilterParents) {
+                        allFilterParents.forEach((parent) => {
+                            const filterID = parent.dataset.filterid;
+                            let activeFilter = parent.querySelector(`.active`);
+                            let activeFilterSet = activeFilter
+                                ? activeFilter.dataset.filterset
+                                : null;
+
+                            const allFilterSegments =
+                                parent.querySelectorAll(`.v26-filter-segment`);
+
+                            const filterStyleTag = document.createElement("style");
+                            filterStyleTag.textContent = `
+                [data-filterid-${filterID}]:not([data-filtertype-${activeFilterSet}]) {
+                  display: none;
+                }
+                [data-filtertype-${activeFilterSet}"] {
+                  animation: bumpin 0.45s cubic-bezier(0.1, 1.35, 0.45, 0.95) forwards, fadein 0.45s ease-in-out forwards;
+                }
+            `;
+                            document.head.appendChild(filterStyleTag);
+
+                            if (allFilterSegments) {
+                                allFilterSegments.forEach((segment) => {
+                                    segment.addEventListener("click", updateFilter);
+                                });
+                            }
+
+                            function updateFilter() {
+                                allFilterSegments.forEach((segment) => {
+                                    segment.classList.remove("active");
+                                });
+                                this.classList.add("active");
+                                activeFilterSet = this.dataset.filterset;
+
+                                filterStyleTag.textContent = `
+                    [data-filterid-${filterID}]:not([data-filtertype-${activeFilterSet}]) {
+                      display: none;
+                    }
+                    [data-filtertype-${activeFilterSet}"] {
+                      animation: bumpin 0.45s cubic-bezier(0.1, 1.35, 0.45, 0.95) forwards, fadein 0.45s ease-in-out forwards;
+                    }
+                `;
+                            }
+                        });
+                    }
+                </script>
+
+                <style>
+                    .v26-filter-segment:not(.active) .v26-filter-active-indicator {
+                        display: none;
+                    }
+
+                    .v26-filter-segment.active {
+                        animation: scalein 0.45s cubic-bezier(0.1, 1.35, 0.45, 0.95) forwards;
+                    }
+
+                    @keyframes scalein {
+                        0% {
+                            transform: scale(0.5);
+                        }
+
+                        100% {
+                            transform: scale(1);
+                        }
+                    }
+
+                    @keyframes bumpin {
+                        0% {
+                            transform: translateY(1rem);
+                        }
+
+                        100% {
+                            transform: translateY(0);
+                        }
+                    }
+
+                    @keyframes fadein {
+                        0% {
+                            opacity: 0;
+                        }
+
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+                </style>
+            </div>
+
+        </div>
+    </div>
+    <div class="backgrounds" id="js-ct" data-pj="c" data-pj-dir="entry">
+        <canvas class="backgrounds-c" id="-aw"></canvas>
+    </div>
+    <script src="assets/js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript"
+        ntegrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="assets/js/schunk.57d5559d2f0cd9f8.js" type="text/javascript"></script>
+    <script src="assets/js/schunk.849d73d85270bf76.js" type="text/javascript"></script>
+    <script src="assets/js/labs.11b789cd.afde3f0511c581db.js" type="text/javascript"></script>
+    <script src="assets/js/lib.js" defer=""></script>
+    <script src="assets/js/vndr.js" defer=""></script>
+    <script src="assets/js/app.js" defer=""></script>
+    <script src="assets/js/fixedscroll.js" defer=""></script>
+    <script src="assets/js/bill.js" defer></script>
+
+
+
+
+
+</body>
+
+</html>
